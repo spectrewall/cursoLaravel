@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use  \App\Models\Tag;
 
 class TagTableSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class TagTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Tag::truncate();
+        Tag::factory()->count(10)->create();
     }
 }
