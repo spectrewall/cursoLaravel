@@ -20,6 +20,11 @@ BLOG ADMIN
 @include('admin.posts._form')
 
 <div class="form-group">
+    {!! Form::label('tags', 'Tags:') !!}<br>
+    {!! Form::text('tags', null, ['class' => 'form-control']) !!}<br>
+</div>
+
+<div class="form-group">
     {!! Form::submit('Post', ['class'=>'btn btn-primary']) !!}<br>
 </div>
 
