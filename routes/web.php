@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostsAdminController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
 use App\Http\Controllers\PostsController;
 
 /*
@@ -16,9 +16,16 @@ use App\Http\Controllers\PostsController;
 |
 */
 
-Route::get('/', [PostsController::class, 'index']);
+Route::get('/', [PostsController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'auth'], function () {
+    Route::get('', [AuthController::class, 'redirect'])->name('auth.redirect');
+    Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('login', [AuthController::class, 'login'])->name('auth.login');
+    Route::post('authenticate', [AuthController::class, 'authenticate'])->name('auth.authenticate');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'posts'], function () {
         Route::get('', [PostsAdminController::class, 'index'])->name('admin.posts.index');
         Route::get('create', [PostsAdminController::class, 'create'])->name('admin.posts.create');
