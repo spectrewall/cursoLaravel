@@ -1,6 +1,6 @@
 <div class="form-group">
     {!! Form::label('email', 'Email:') !!}<br>
-    {!! Form::email("email", null, array()); !!}<br>
+    {!! Form::email('email', null, array()); !!}<br>
 </div>
 
 <div class="form-group">

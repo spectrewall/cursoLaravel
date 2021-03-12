@@ -17,6 +17,11 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
+Route::group(['prefix' => 'post'], function () {
+    Route::get('{id}', [PostsController::class, 'post'])->name('post');
+    Route::get('search/{id}', [PostsController::class, 'search'])->name('post.searchByTag');
+    Route::post('newcomment/{id}', [PostsController::class, 'comment'])->name('post.newComment');
+});
 
 Route::group(['prefix' => 'auth'], function () {
     Route::get('', [AuthController::class, 'redirect'])->name('auth.redirect');
