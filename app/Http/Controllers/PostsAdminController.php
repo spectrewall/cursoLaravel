@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\Tag;
-use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 
 class PostsAdminController extends Controller
@@ -16,15 +15,17 @@ class PostsAdminController extends Controller
 
     private $post;
 
-    public function __construct(Post $post)
+    public function __construct(Post $post, Tag $tag)
     {
         $this->post = $post;
+        $this->tag = $tag;
     }
 
     public function index()
     {
-        $posts = $this->post->paginate(5);
-        return view('admin.posts.index', compact('posts'));
+        $posts = $this->post->paginate(5, ['*'], 'page');
+        $tags = $this->tag->paginate(5, ['*'], 'tag-page');
+        return view('admin.posts.index', compact('posts', 'tags'));
     }
 
     public function create()

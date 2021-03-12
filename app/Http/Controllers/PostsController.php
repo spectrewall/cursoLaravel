@@ -28,7 +28,6 @@ class PostsController extends Controller
     {
         $posts = DB::table('posts_tags')->where('tag_id', $id)->paginate(10, ['*'], 'page');
         $tags = $this->tag->paginate(10, ['*'], 'tag-page');
-
         return view('posts.search', compact('posts', 'tags', 'id'));
     }
 
