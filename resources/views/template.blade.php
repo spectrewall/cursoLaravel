@@ -12,7 +12,32 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+<body class="container">
+    <br>
+    <nav style="display:flex; align-items:center; justify-content: space-between;">
+        <div style="text-align:left; display:inline-block">
+            <a href=" {{ route('home') }}"><button type="button" class="btn btn-info">Home</button></a>
+        </div>
+        <div style="text-align:right; display:inline-block">
+            @if(Illuminate\Support\Facades\Auth::check())
+            <a href="{{ route('admin.posts.index') }}"><button type="button" class="btn btn-info">Admin</button></a>
+            <a href="{{ route('auth.logout') }}"><button type="button" class="btn btn-danger">Logout</button></a>
+            @else
+            <a href="{{ route('auth.login') }}"><button type="button" class="btn btn-success">Login</button></a>
+            @endif
+        </div>
+    </nav>
     @yield('content')
 </body>
 

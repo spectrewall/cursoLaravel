@@ -5,28 +5,32 @@ BLOG ADMIN
 @stop
 
 @section('content')
-<h1>Login</h1>
+<div style="display:flex; align-items:center; flex-direction:column; margin-top:100px;">
+    <h1>Login</h1>
 
-@if($errors->any())
-<ul class="alert">
-    @foreach($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-</ul>
-@endif
+    @if($errors->any())
+    <ul class="alert">
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    @endif
 
-{!! Form::open(['route'=>'auth.authenticate', 'method'=>'post']) !!}
+    {!! Form::open(['route'=>'auth.authenticate', 'method'=>'post']) !!}
 
-@include('admin.auth._form')
+    @include('admin.auth._form')
 
-<div class="form-group">
-    {!! Form::checkbox('remember', 'value', true) !!}
-    {!! Form::label('remember', 'Remember me:') !!}<br>
+    <div class="form-group">
+        {!! Form::label('remember', 'Remember me:') !!}
+        {!! Form::checkbox('remember', 'value', true) !!}
+        <br>
+    </div>
+
+    <div class="form-group" style="text-align:center;">
+        {!! Form::submit('Sign In', ['class'=>'btn btn-primary']) !!}<br>
+    </div>
+
+    {!! Form::close() !!}
 </div>
 
-<div class="form-group">
-    {!! Form::submit('Post', ['class'=>'btn btn-primary']) !!}<br>
-</div>
-
-{!! Form::close() !!}
 @stop
