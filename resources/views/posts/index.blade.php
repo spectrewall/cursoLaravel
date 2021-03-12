@@ -24,5 +24,4 @@ BLOG
 <br>
 @include('_posts')
 <hr>
-
 @stop
