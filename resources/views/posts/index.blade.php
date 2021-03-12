@@ -11,6 +11,8 @@ BLOG
 <h1>Blog</h1>
 <br>
 
+{{ $posts->links('pagination.default', compact('tags')) }}
+<br>
 <div style="display:flex; justify-content:space-between;">
     <div style="display:inline-block; width: 60%">
         @foreach($posts as $post)
@@ -22,6 +24,6 @@ BLOG
     </div>
 </div>
 <br>
-@include('_posts')
+{{ $posts->links('pagination.default', compact('tags')) }}
 <hr>
 @stop

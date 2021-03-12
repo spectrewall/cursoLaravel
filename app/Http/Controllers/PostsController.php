@@ -19,8 +19,8 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = $this->post->paginate(10, ['*'], 'page');
-        $tags = $this->tag->paginate(10, ['*'], 'tag-page');
+        $posts = $this->post->paginate(5, ['*'], 'page');
+        $tags = $this->tag->paginate(5, ['*'], 'tag-page');
         return view('posts.index', compact('posts', 'tags'));
     }
 

@@ -30,6 +30,6 @@ BLOG ADMIN
 
 </table>
 
-@include('_posts')
+{{ $posts->links('pagination.default', compact('tags')) }}
 
 @stop
