@@ -19,15 +19,15 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = $this->post->paginate(10);
-        $tags = $this->tag->all();
+        $posts = $this->post->paginate(10, ['*'], 'page');
+        $tags = $this->tag->paginate(10, ['*'], 'tag-page');
         return view('posts.index', compact('posts', 'tags'));
     }
 
     public function search($id)
     {
-        $posts = DB::table('posts_tags')->where('tag_id', $id)->paginate(10);
-        $tags = $this->tag->all();
+        $posts = DB::table('posts_tags')->where('tag_id', $id)->paginate(10, ['*'], 'page');
+        $tags = $this->tag->paginate(10, ['*'], 'tag-page');
 
         return view('posts.search', compact('posts', 'tags', 'id'));
     }
