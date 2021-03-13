@@ -35,8 +35,18 @@ class PostsAdminController extends Controller
 
     public function store(PostRequest $request)
     {
+        $tag = $request->tags;
+        $tagList = array_filter(array_map('trim', explode(',', $tag[0])));
+
         $post = $this->post->create($request->all());
-        $post->tags()->sync($this->getTagsIds($request->tags));
+
+        if (count($tagList) > 3) {
+            return redirect()->route('admin.posts.edit', $post->id)->withErrors([
+                'tags' => 'The maximum number of tags is 3.',
+            ]);
+        }
+
+        $post->tags()->sync($this->getTagsIds($tagList));
         return redirect()->route('admin.posts.index');
     }
 
@@ -48,9 +58,18 @@ class PostsAdminController extends Controller
 
     public function update($id, PostRequest $request)
     {
+        $tag = $request->tags;
+        $tagList = array_filter(array_map('trim', explode(',', $tag[0])));
+
+        if (count($tagList) > 3) {
+            return redirect()->route('admin.posts.edit', $id)->withErrors([
+                'tags' => 'The maximum number of tags is 3.',
+            ]);
+        }
+
         $post = $this->post->find($id);
         $post->update($request->all());
-        $post->tags()->sync($this->getTagsIds($request->tags));
+        $post->tags()->sync($this->getTagsIds($tagList));
         return redirect()->route('admin.posts.index');
     }
 
@@ -71,9 +90,8 @@ class PostsAdminController extends Controller
         return redirect()->route('admin.posts.index');
     }
 
-    private function getTagsIds($tags)
+    private function getTagsIds($tagsList)
     {
-        $tagsList = array_filter(array_map('trim', explode(',', $tags)));
         $tagsIDs = [];
         foreach ($tagsList as $tagName) {
             $tagsIDs[] = Tag::firstOrCreate(['name' => $tagName])->id;

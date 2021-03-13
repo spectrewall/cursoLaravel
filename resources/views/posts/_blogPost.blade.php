@@ -1,6 +1,14 @@
-<div style="background-color: #ffffff;">
+<div style="padding-top:0px;
+            background-color: rgba(160, 153, 194, 0.7);
+            background-position: center center;
+            background-size: cover;
+            border:1px solid #ddd;
+            border-radius: 10px;
+            display:inline-block;
+            width:90%;
+">
     <a href="{{ route('post', ['id'=>$post->id]) }}">
-        <h2 style="text-align:left; margin:10px">{{$post->title}}</h2>
+        <h2 style="text-align:left; margin:10px; margin-top:2%;">{{$post->title}}</h2>
     </a>
     @if(strlen($post->content) > 1024)
     <p style="margin:10px">{{ substr($post->content, 0, 1024) }} <b>...Open the post to see more.</b></p>

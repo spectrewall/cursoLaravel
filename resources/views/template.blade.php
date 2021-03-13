@@ -15,6 +15,11 @@
 <style>
     body {
         background-color: #ececec;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url(https://wallpaperplay.com/walls/full/7/2/9/20920.jpg);
+        background-attachment: fixed;
     }
 
     img {
@@ -25,7 +30,10 @@
 
 <body class="container">
     <br>
-    <nav style="display:flex; align-items:center; justify-content: space-between;">
+    <nav style="display:flex;
+                align-items:center;
+                justify-content:space-between;
+    ">
         <div style="text-align:left; display:inline-block">
             <a href=" {{ route('home') }}"><button type="button" class="btn btn-info">Home</button></a>
         </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Tag;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class PostRequest extends FormRequest
@@ -21,11 +23,12 @@ class PostRequest extends FormRequest
      *
      * @return array
      */
+
     public function rules()
     {
         return [
             'title' => 'required|min:1|max:512',
-            'content' => 'required|min:1'
+            'content' => 'required|min:1',
         ];
     }
 }
