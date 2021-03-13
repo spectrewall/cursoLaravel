@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostsAdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\DiscordAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
+Route::get('discord/auth', [DiscordAuthController::class, 'auth'])->name('discord.auth');
+Route::get('discord/login', [DiscordAuthController::class, 'login'])->name('discord.login');
+
 Route::group(['prefix' => 'post'], function () {
     Route::get('{id}', [PostsController::class, 'post'])->name('post');
     Route::get('search/{id}', [PostsController::class, 'search'])->name('post.searchByTag');

@@ -39,6 +39,14 @@
         </div>
         <div style="text-align:right; display:inline-block">
             @if(Illuminate\Support\Facades\Auth::check())
+            <!-- User Info -->
+            <?php $user = new App\Models\discordUser; ?>
+            <?php $userinfo = $user->getUserInfoBySession(); ?>
+            <b>{{ $userinfo->name }}</b>
+            <div style="display:inline-block; width:40px; height:40px;">
+                <img src="{{ $userinfo->avatar }}" alt="@include_userImg" style=" border-radius: 40px;">
+            </div>
+            <!-- User Info end -->
             <a href="{{ route('admin.posts.index') }}"><button type="button" class="btn btn-info">Admin</button></a>
             <a href="{{ route('auth.logout') }}"><button type="button" class="btn btn-danger">Logout</button></a>
             @else
