@@ -12,6 +12,7 @@
         </li>
         @endif
 
+        <!--
         {{-- Pagination Elements --}}
         @foreach ($elements as $element)
         {{-- "Three Dots" Separator --}}
@@ -30,6 +31,7 @@
         @endforeach
         @endif
         @endforeach
+        -->
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())

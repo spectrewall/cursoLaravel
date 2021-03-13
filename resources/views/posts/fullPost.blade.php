@@ -8,14 +8,26 @@
 
 @section('content')
 
-<h1>{{$post->title}}</h1>
-<br>
 
-<div style="display:flex; justify-content:space-between;">
-    <div style="display:inline-block; width: 60%">
-        <div style="background-color: #ffffff;">
+<br>
+<div style="display:flex;
+            border:1px solid #ddd;
+            border-radius: 30px;
+            background-color: #ffffff;
+            margin: auto;
+">
+    <div>
+        <div style="padding: 10px 20px;">
+            <h1 id="top">{{$post->title}}</h1>
+            <br>
             <p style="margin:10px;">{{$post->content}}</p>
             <br>
+            <b style="margin:10px">Tags:</b>
+            <ul style="margin:10px">
+                @foreach($post->tags as $tag)
+                <li>{{$tag->name}}</li>
+                @endforeach
+            </ul>
             <div id="comments">
                 <h3 style="margin:10px">{{$post->comments->count()}} Comments:</h3>
                 @if($post->comments == '[]')
@@ -52,15 +64,20 @@
             </div>
         </div>
     </div>
-    <div style="display:inline-block; text-align:left; padding-top:0px">
-        <b style="margin:10px">Tags:</b>
-        <ul style="margin:10px">
-            @foreach($post->tags as $tag)
-            <li>{{$tag->name}}</li>
-            @endforeach
-        </ul>
-    </div>
 </div>
-<hr>
+<br>
+<div class="center" style="
+                            position:fixed;
+                            display:flex;
+                            bottom:3%;
+                            align-items:center;
+                            text-align:center;
+                            left: 50%;
+                            -ms-transform: translate(-50%, -50%);
+                            transform: translate(-50%, -50%);
+">
+    <a href="#top"><button class="btn btn-info">Climb Top</button></a>
+</div>
+<br>
 
 @stop
