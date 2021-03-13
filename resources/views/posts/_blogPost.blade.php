@@ -7,6 +7,11 @@
             display:inline-block;
             width:90%;
 ">
+    @if($post->created_at_format == $post->updated_at_format)
+    <p style="margin:10px">Created at: {{ $post->created_at_format }}</p>
+    @else
+    <p style="margin:10px">Created at: {{ $post->created_at_format }} | Last update: {{ $post->updated_at_format }}</p>
+    @endif
     <a href="{{ route('post', ['id'=>$post->id]) }}">
         <h2 style="text-align:left; margin:10px; margin-top:2%;">{{$post->title}}</h2>
     </a>

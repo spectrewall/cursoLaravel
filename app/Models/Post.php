@@ -32,4 +32,14 @@ class Post extends Model
         }
         return implode(', ', $tagsNames);
     }
+
+    public function getCreatedAtFormatAttribute()
+    {
+        return $this->created_at->format('Y-M-d H:i');
+    }
+
+    public function getUpdatedAtFormatAttribute()
+    {
+        return $this->updated_at->format('Y-M-d H:i');
+    }
 }

@@ -13,7 +13,7 @@ class PostsController extends Controller
 {
     public function __construct(Post $post, Tag $tag)
     {
-        $this->post = $post;
+        $this->post = $post->orderBy('created_at', 'desc');
         $this->tag = $tag->orderBy('name', 'asc');
     }
 
