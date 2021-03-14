@@ -4,8 +4,6 @@
 BLOG
 @stop
 
-
-
 @section('content')
 
 <h1>Blog</h1>

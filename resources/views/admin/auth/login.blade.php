@@ -31,6 +31,14 @@ BLOG ADMIN
     </div>
 
     {!! Form::close() !!}
+
+    <div class="form-group" style="text-align:center;">
+        <b>Or</b><br>
+    </div>
+
+    <div class="form-group" style="text-align:center;">
+        <a href="{{ route('discord.login') }}"><img src="https://i.imgur.com/X39u4me.png" alt="Login with Discord" width="40px" height="40px"></a>
+    </div>
 </div>
 
 @stop
