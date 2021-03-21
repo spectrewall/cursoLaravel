@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Post;
-use Illuminate\Database\Eloquent\Model;
 
 class PostsTableSeeder extends Seeder
 {
